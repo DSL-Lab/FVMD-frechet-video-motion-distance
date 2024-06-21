@@ -1,4 +1,4 @@
-datasets/*datasets
+fvmd/datasets/*datasets
 datasets/*.png
 datasets/*.sh
 experiments/log/
@@ -17,3 +17,6 @@ experiments/vault/
 /logs
 /reference_model
 /.idea
+/build
+/dist
+/fvmd.egg-info
