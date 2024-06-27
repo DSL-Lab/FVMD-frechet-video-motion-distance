@@ -23,9 +23,10 @@ We propose the **Fréchet video motion distance(FVMD)**, a novel metric that foc
 We use the TikTok dataset to provide a quantitative comparison of various video evaluation metrics. Specifically, we generate 50 videos using different checkpoints named (a) through (e). The models (a) to (e) are sorted based on human ratings collected through a user study, from worse to better visual quality (model (e) has the best visual quality and model (a) has the worst). We can then compare how well the evaluation metrics align with human judgments.
 
 <!-- <img src="./asset/evaluation_results.png"> -->
-<video controls>
-  <source src="./asset/FVMD.mp4" type="video/mp4">
-</video>
+https://github.com/ljh0v0/FVMD-frechet-video-motion-distance/assets/32333051/378d9ee3-4243-4987-937e-ddbaa0631e83
+
+
+
 
 | **Metrics**     | **Model (a)**  | **Model (b)**  | **Model (c)**  | **Model (d)**  | **Model (e)**  | **Human Corr.↑**|
 |-----------------|----------------|----------------|----------------|----------------|----------------|---------------------------------|
