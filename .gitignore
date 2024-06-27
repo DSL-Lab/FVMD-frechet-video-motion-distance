@@ -1,6 +1,7 @@
-fvmd/datasets/*datasets
-datasets/*.png
-datasets/*.sh
+keypoints_tracking/
+*.npy
+*.json
+datasets/
 experiments/log/
 experiments/vault/
 *.tar.gz
