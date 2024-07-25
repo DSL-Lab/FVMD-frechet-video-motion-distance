@@ -1,12 +1,13 @@
 # FVMD Metric for Generated Videos
 This repository contains the official implementation of the Fréchet video motion distance(FVMD) in PyTorch. 
 
-[![Generic badge](https://img.shields.io/badge/Paper-arxiv-default.svg)]() [![Generic badge](https://img.shields.io/badge/pypi-v1.0.0-red.svg)](https://pypi.org/project/fvmd/1.0.0/)
+[![Generic badge](https://img.shields.io/badge/Paper-arxiv-default.svg)](https://arxiv.org/abs/2407.16124) [![Generic badge](https://img.shields.io/badge/pypi-v1.0.0-red.svg)](https://pypi.org/project/fvmd/1.0.0/)
 
 
 
 ## 🔥 News
 
+* [2024.07.01] FVMD has been accepted by ICML workshop. Please check the latest version of paper on [ArXiv](https://arxiv.org/abs/2407.16124).
 * [2024.06.16] PyPI package is released. Simply `pip install fvmd`.
 * [2024.06.16] Release the code for FVMD.
 
