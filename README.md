@@ -21,7 +21,24 @@ We propose the **Fréchet video motion distance(FVMD)**, a novel metric that foc
 
 ### Evaluation Results
 
-<img src="./asset/evaluation_results.png">
+We use the TikTok dataset to provide a quantitative comparison of various video evaluation metrics. Specifically, we generate 50 videos using different checkpoints named (a) through (e). The models (a) to (e) are sorted based on human ratings collected through a user study, from worse to better visual quality (model (e) has the best visual quality and model (a) has the worst). We can then compare how well the evaluation metrics align with human judgments.
+
+<!-- <img src="./asset/evaluation_results.png"> -->
+https://github.com/ljh0v0/FVMD-frechet-video-motion-distance/assets/32333051/378d9ee3-4243-4987-937e-ddbaa0631e83
+
+
+
+
+| **Metrics**     | **Model (a)**  | **Model (b)**  | **Model (c)**  | **Model (d)**  | **Model (e)**  | **Human Corr.↑**|
+|-----------------|----------------|----------------|----------------|----------------|----------------|---------------------------------|
+| FID↓        | 73.20/3        | 79.35/4        | 63.15/2        | 89.57/5        | 18.94/1        | 0.3                             |
+| FVD↓            | 405.26/4       | 468.50/5       | 247.37/2       | 358.17/3       | 147.90/1       | 0.8                             |
+| VBench↑         | 0.7430/5       | 0.7556/4       | 0.7841/2       | 0.7711/3       | 0.8244/1       | 0.9                             |
+| FVMD↓           | 7765.91/5      | 3178.80/4      | 2376.00/3      | 1677.84/2      | 926.55/1       | **1.0**                             |
+
+In this table, we show the raw scores given by different metrics, which are computed by comparing a set of generated videos (as shown in the video above) to a set of reference videos. We report the corresponding ranking among the five models. The ranking correlation between the metrics evaluation and human ratings is also reported, where a higher value indicates better alignment with human judgments.
+
+Our FVMD ranks the models correctly in line with human ratings and shows promising result for evaluating video generative models, especially when motion consistency is concerned.
 
 
 
