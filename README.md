@@ -147,7 +147,12 @@ results = calculate_fvmd_given_paths(gen_path=<directory/of/gen_velocity/acceler
 If you find our repo useful for your research, please cite our paper:
 
 ```
-
+@article{liu2024fr,
+  title={Fr$\backslash$'echet Video Motion Distance: A Metric for Evaluating Motion Consistency in Videos},
+  author={Liu, Jiahe and Qu, Youran and Yan, Qi and Zeng, Xiaohui and Wang, Lele and Liao, Renjie},
+  journal={arXiv preprint arXiv:2407.16124},
+  year={2024}
+}
 ```
 
 
