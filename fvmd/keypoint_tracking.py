@@ -37,7 +37,7 @@ def calc_velocity(trajs_e):
     trajs_e0 = trajs_e[:,:-1] # B,S-1,N,2
     trajs_e1 = trajs_e[:,1:] # B,S-1,N,2
     velocity = trajs_e1-trajs_e0 # B,S-1,N,2
-    velocity = torch.cat([torch.zeros(B,1,N,2).cuda(), velocity], dim=1) # B,S,N,2
+    velocity = torch.cat([torch.zeros(B,1,N,2).to(trajs_e.device), velocity], dim=1) # B,S,N,2
     return velocity
 
 def calc_acceleration(velocity):
@@ -50,22 +50,23 @@ def calc_acceleration(velocity):
         velocity (torch.tensor): (Batch_size, Frames, Points, 2)
     """
     B,S,N,_ = velocity.shape
+    device = velocity.device
     velocity0 = velocity[:, 1:-1]  # B,S-2,N,2
     velocity1 = velocity[:,2:] # B,S-2,N,2
     acceleration = velocity1-velocity0 # B,S-2,N,2
-    acceleration = torch.cat([torch.zeros(B,1,N,2).cuda(), torch.zeros(B,1,N,2).cuda(), acceleration], dim=1) # B,S,N,2
+    acceleration = torch.cat([torch.zeros(B,1,N,2).to(device), torch.zeros(B,1,N,2).to(device), acceleration], dim=1) # B,S,N,2
     return acceleration
 
 
 def run_tracking(model, rgbs, N=64, iters=16):
-    rgbs = rgbs.cuda().float()  # B, S, C, H, W
+    rgbs = rgbs.float()  # B, S, C, H, W
 
     B, S, C, H, W = rgbs.shape
     assert (B == 1)
 
     # pick N points to track; we'll use a uniform grid
     N_ = np.sqrt(N).round().astype(np.int32)
-    grid_y, grid_x = fvmd.utils.basic.meshgrid2d(B, N_, N_, stack=False, norm=False, device='cuda')
+    grid_y, grid_x = fvmd.utils.basic.meshgrid2d(B, N_, N_, stack=False, norm=False)
     grid_y = 8 + grid_y.reshape(B, -1) / float(N_ - 1) * (H - 16)
     grid_x = 8 + grid_x.reshape(B, -1) / float(N_ - 1) * (W - 16)
     xy0 = torch.stack([grid_x, grid_y], dim=-1)  # B, N_*N_, 2
@@ -82,7 +83,7 @@ def run_tracking(model, rgbs, N=64, iters=16):
     return trajs_e
 
 def tracking_fullseq(model, rgbs, sw, N = 400, iters=8, S_max=16, name='sample'):
-    rgbs = rgbs.cuda().float()  # B,S,C,H,W
+    rgbs = rgbs.float()  # B,S,C,H,W
 
     B, S, C, H, W = rgbs.shape
     assert (B == 1)
