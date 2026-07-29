@@ -425,7 +425,7 @@ class Pips(nn.Module):
         self.norm = nn.GroupNorm(1, self.latent_dim)
 
     def forward(self, trajs_e0, rgbs, iters=3, trajs_g=None, vis_g=None, valids=None, sw=None, feat_init=None, is_train=False, beautify=False):
-        total_loss = torch.tensor(0.0).cuda()
+        total_loss = torch.tensor(0.0)
 
         B,S,N,D = trajs_e0.shape
         assert(D==2)
@@ -435,8 +435,6 @@ class Pips(nn.Module):
         
         H8 = H//self.stride
         W8 = W//self.stride
-
-        device = rgbs.device
 
         rgbs_ = rgbs.reshape(B*S, C, H, W)
         fmaps_ = self.fnet(rgbs_)
